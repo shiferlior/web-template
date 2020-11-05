@@ -28,3 +28,15 @@ CMD graphql-engine \
 #    --auth-hook https://myapp.com/hasura-webhook 
 #
 # Console can be enable/disabled by the env var HASURA_GRAPHQL_ENABLE_CONSOLE
+
+## Node section
+FROM node:12.18.1
+ENV NODE_ENV=production
+WORKDIR /app
+COPY ["functions/package.json", "functions/package-lock.json*", "./functions/", "./"]
+RUN npm install --production
+COPY ./functions ./app
+CMD [ "node", "server.js" ]
+
+## docker build --tag node-docker .
+## docker run --publish 8000:8000 node-docker
