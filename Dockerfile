@@ -10,6 +10,9 @@ ENV HASURA_GRAPHQL_DEV_MODE=true
 # https://devcenter.heroku.com/articles/heroku-postgres-plans#hobby-tier
 ENV HASURA_GRAPHQL_PG_CONNECTIONS=15
 
+ENV HASURA_GRAPHQL_ADMIN_SECRET=lior
+ENV HASURA_GRAPHQL_JWT_SECRET={"type": "HS256","key": "2KMl1iI8oDWhWo1bB6gyEJpygtvvBXNn"}
+
 # Change $DATABASE_URL to your heroku postgres URL if you're not using
 # the primary postgres instance in your app
 CMD graphql-engine \
