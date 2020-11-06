@@ -1,0 +1,1 @@
+CREATE TABLE "public"."payments"("id" serial NOT NULL, "contract_id" integer NOT NULL, "amount" float8 NOT NULL, "date" date NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("contract_id") REFERENCES "public"."contracts"("id") ON UPDATE restrict ON DELETE restrict);

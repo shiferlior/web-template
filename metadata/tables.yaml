@@ -1,1 +1,15 @@
-[]
+- table:
+    schema: public
+    name: contracts
+- table:
+    schema: public
+    name: entities
+- table:
+    schema: public
+    name: payments
+- table:
+    schema: public
+    name: project_managers
+- table:
+    schema: public
+    name: properties
