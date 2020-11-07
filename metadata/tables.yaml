@@ -3,7 +3,16 @@
     name: contracts
 - table:
     schema: public
+    name: contracts_renters_relation
+- table:
+    schema: public
     name: entities
+- table:
+    schema: public
+    name: insurance_contracts
+- table:
+    schema: public
+    name: pay_methods
 - table:
     schema: public
     name: payments
@@ -13,3 +22,9 @@
 - table:
     schema: public
     name: properties
+- table:
+    schema: public
+    name: ticket_types
+- table:
+    schema: public
+    name: tickets

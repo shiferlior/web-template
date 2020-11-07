@@ -1,0 +1,1 @@
+CREATE TABLE "public"."insurance_contracts"("id" serial NOT NULL, "property_id" integer NOT NULL, "who_pay" integer NOT NULL, "price" float8, "comment" text, "start_date" date, "end_date" date, "link_to_s3" text, PRIMARY KEY ("id") , FOREIGN KEY ("property_id") REFERENCES "public"."properties"("id") ON UPDATE restrict ON DELETE restrict);
