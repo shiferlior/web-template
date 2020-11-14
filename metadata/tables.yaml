@@ -1,30 +1,142 @@
 - table:
     schema: public
     name: contracts
+  object_relationships:
+  - name: property
+    using:
+      foreign_key_constraint_on: property_id
+  array_relationships:
+  - name: payments
+    using:
+      foreign_key_constraint_on:
+        column: contract_id
+        table:
+          schema: public
+          name: payments
+  - name: tickets
+    using:
+      foreign_key_constraint_on:
+        column: contract_id
+        table:
+          schema: public
+          name: tickets
 - table:
     schema: public
     name: contracts_renters_relation
+  object_relationships:
+  - name: entity
+    using:
+      foreign_key_constraint_on: contract_id
+  - name: entityByRenterId
+    using:
+      foreign_key_constraint_on: renter_id
 - table:
     schema: public
     name: entities
+  array_relationships:
+  - name: contracts_renters_relations
+    using:
+      foreign_key_constraint_on:
+        column: contract_id
+        table:
+          schema: public
+          name: contracts_renters_relation
+  - name: contractsRentersRelationsByRenterId
+    using:
+      foreign_key_constraint_on:
+        column: renter_id
+        table:
+          schema: public
+          name: contracts_renters_relation
 - table:
     schema: public
     name: insurance_contracts
+  object_relationships:
+  - name: property
+    using:
+      foreign_key_constraint_on: property_id
 - table:
     schema: public
     name: pay_methods
 - table:
     schema: public
     name: payments
+  object_relationships:
+  - name: contract
+    using:
+      foreign_key_constraint_on: contract_id
+  array_relationships:
+  - name: tickets
+    using:
+      foreign_key_constraint_on:
+        column: payment_id
+        table:
+          schema: public
+          name: tickets
 - table:
     schema: public
     name: project_managers
+  array_relationships:
+  - name: properties
+    using:
+      foreign_key_constraint_on:
+        column: project_manager
+        table:
+          schema: public
+          name: properties
+  - name: tickets
+    using:
+      foreign_key_constraint_on:
+        column: project_manager_id
+        table:
+          schema: public
+          name: tickets
 - table:
     schema: public
     name: properties
+  object_relationships:
+  - name: projectManagerByProjectManager
+    using:
+      foreign_key_constraint_on: project_manager
+  array_relationships:
+  - name: contracts
+    using:
+      foreign_key_constraint_on:
+        column: property_id
+        table:
+          schema: public
+          name: contracts
+  - name: insurance_contracts
+    using:
+      foreign_key_constraint_on:
+        column: property_id
+        table:
+          schema: public
+          name: insurance_contracts
 - table:
     schema: public
     name: ticket_types
+  array_relationships:
+  - name: tickets
+    using:
+      foreign_key_constraint_on:
+        column: tieck_type_id
+        table:
+          schema: public
+          name: tickets
 - table:
     schema: public
     name: tickets
+  object_relationships:
+  - name: contract
+    using:
+      foreign_key_constraint_on: contract_id
+  - name: payment
+    using:
+      foreign_key_constraint_on: payment_id
+  - name: project_manager
+    using:
+      foreign_key_constraint_on: project_manager_id
+  - name: ticket_type
+    using:
+      foreign_key_constraint_on: tieck_type_id
