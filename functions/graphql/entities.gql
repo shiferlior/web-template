@@ -1,0 +1,6 @@
+query getPm {
+  project_managers {
+    id
+    name
+  }
+}
