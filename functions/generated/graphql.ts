@@ -4872,25 +4872,46 @@ export type Timestamptz_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['timestamptz']>>;
 };
 
-export type GetPmQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetProjectManagersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPmQuery = (
+export type GetProjectManagersQuery = (
   { __typename?: 'query_root' }
-  & {
-    project_managers: Array<(
-      { __typename?: 'project_managers' }
-      & Pick<Project_Managers, 'id' | 'name'>
-    )>
-  }
+  & { project_managers: Array<(
+    { __typename?: 'project_managers' }
+    & Pick<Project_Managers, 'id' | 'name'>
+  )> }
+);
+
+export type GetEntitiesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetEntitiesQuery = (
+  { __typename?: 'query_root' }
+  & { entities: Array<(
+    { __typename?: 'entities' }
+    & Pick<Entities, 'email' | 'id' | 'id_number' | 'letter_address' | 'link_to_s3' | 'phone'>
+  )> }
 );
 
 
-export const GetPmDocument = gql`
-    query getPm {
+export const GetProjectManagersDocument = gql`
+    query getProjectManagers {
   project_managers {
     id
     name
+  }
+}
+    `;
+export const GetEntitiesDocument = gql`
+    query getEntities {
+  entities {
+    email
+    id
+    id_number
+    letter_address
+    link_to_s3
+    phone
   }
 }
     `;
@@ -4901,8 +4922,11 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    getPm(variables?: GetPmQueryVariables): Promise<GetPmQuery> {
-      return withWrapper(() => client.request<GetPmQuery>(print(GetPmDocument), variables));
+    getProjectManagers(variables?: GetProjectManagersQueryVariables): Promise<GetProjectManagersQuery> {
+      return withWrapper(() => client.request<GetProjectManagersQuery>(print(GetProjectManagersDocument), variables));
+    },
+    getEntities(variables?: GetEntitiesQueryVariables): Promise<GetEntitiesQuery> {
+      return withWrapper(() => client.request<GetEntitiesQuery>(print(GetEntitiesDocument), variables));
     }
   };
 }
