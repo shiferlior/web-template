@@ -1,8 +1,5 @@
 # Mac files
 .DS_Store
 
-# Dependency directories
-/functions/node_modules
-
 # lerna files
 /lerna-debug.log
