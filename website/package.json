@@ -5,17 +5,27 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "generate": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=env/local.env"
   },
   "dependencies": {
-    "next": "latest",
+    "graphql": "^15.4.0",
+    "next": "^10.0.3",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-query": "^2.26.3"
   },
   "devDependencies": {
-    "@types/node": "^12.19.6",
+    "@graphql-codegen/cli": "^1.19.2",
+    "@graphql-codegen/typescript": "^1.17.11",
+    "@graphql-codegen/typescript-graphql-request": "^2.0.2",
+    "@graphql-codegen/typescript-operations": "1.17.10",
+    "@graphql-codegen/typescript-react-query": "^0.1.1",
+    "@types/node": "^14.0.1",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
+    "dotenv": "^8.2.0",
+    "ts-node": "^9.0.0",
     "typescript": "^4.1.2"
   },
   "license": "MIT"

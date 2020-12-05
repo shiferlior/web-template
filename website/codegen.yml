@@ -1,0 +1,17 @@
+overwrite: true
+schema: ${SCHEMA_PATH}
+documents: "graphql/**/*.gql"
+generates:
+  generated/frontend/graphql.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      fetcher:
+        endpoint: ${SCHEMA_PATH}
+  generated/backend/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-graphql-request"
