@@ -2,9 +2,11 @@ import { GetStaticProps } from 'next'
 import Link from 'next/link'
 
 import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
+//import { sampleUserData } from '../../utils/sample-data'
 import Layout from '../../components/Layout'
 import List from '../../components/List'
+import { getSdk } from '../../generated/backend/graphql';
+import { GraphQLClient } from 'graphql-request';
 
 type Props = {
   items: User[]
@@ -30,7 +32,10 @@ export const getStaticProps: GetStaticProps = async () => {
   // Example for including static props in a Next.js function component page.
   // Don't forget to include the respective types for any props passed into
   // the component.
-  const items: User[] = sampleUserData
+  const sdk = getSdk(new GraphQLClient('http://localhost:8080/v1/graphql'));
+  const pm = await sdk.getProjectManagers();
+
+  const items: User[] = pm.project_managers;//sampleUserData
   return { props: { items } }
 }
 

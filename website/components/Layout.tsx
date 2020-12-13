@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import Blet from './Blet'
+import Blet from './blet/Blet'
 
 type Props = {
   children?: ReactNode
