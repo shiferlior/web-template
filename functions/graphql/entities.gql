@@ -1,0 +1,17 @@
+query getProjectManagers {
+  project_managers {
+    id
+    name
+  }
+}
+
+query getEntities{
+  entities {
+    email
+    id
+    id_number
+    letter_address
+    link_to_s3
+    phone
+  }
+}

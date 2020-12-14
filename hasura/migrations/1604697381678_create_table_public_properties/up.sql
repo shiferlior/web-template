@@ -1,0 +1,1 @@
+CREATE TABLE "public"."properties"("id" serial NOT NULL, "address" text, "address_part" text, "project_manager" integer NOT NULL, "arnona_monthly_amount" money, PRIMARY KEY ("id") , FOREIGN KEY ("project_manager") REFERENCES "public"."project_managers"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"));
